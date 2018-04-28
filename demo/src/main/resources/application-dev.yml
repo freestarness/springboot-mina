@@ -1,0 +1,27 @@
+####################################
+# ! 服务配置
+####################################
+server:
+  port: 10002
+####################################
+# ! 应用配置
+####################################
+spring:
+  datasource:
+    url: jdbc:mysql://198.75.3.70:3306/jpjf?useUnicode=true&amp;characterEncoding=UTF-8
+    username: jpjf
+    password: 9nkwQyCAjOLakt0ZXu/m8Q==
+
+    max-active: 20
+    initial-size: 1
+    min-idle: 3
+    max-wait: 60000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    poolPreparedStatements: true
+    validationQuery: SELECT 'x'
+mina:
+  port: 10010
