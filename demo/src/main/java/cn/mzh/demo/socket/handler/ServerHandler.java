@@ -1,7 +1,5 @@
 package cn.mzh.demo.socket.handler;
 
-
-
 import static cn.mzh.demo.App.logger;
 
 import java.util.concurrent.ExecutionException;
@@ -21,7 +19,7 @@ public class ServerHandler extends IoHandlerAdapter {
 	@Override
 	public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
 		logger.error("出现异常 :" + session.getRemoteAddress().toString() + " : " + cause.toString());
-		
+
 		session.write("出现异常");
 		session.closeNow();
 	}
@@ -46,15 +44,14 @@ public class ServerHandler extends IoHandlerAdapter {
 
 	}
 
-	private String analyzeData(String text, IoSession session) throws InterruptedException, ExecutionException
-			 {
-		String  responseMessage = "接受到数据";
+	private String analyzeData(String text, IoSession session) throws InterruptedException, ExecutionException {
+		String responseMessage = "接受到数据";
 		return responseMessage;
 	}
 
 	@Override
 	public void messageSent(IoSession session, Object message) throws Exception {
-		logger.info("返回警示通消息内容 : " + message.toString());
+		logger.info("返回消息内容 : " + message.toString());
 	}
 
 	@Override

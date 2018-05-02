@@ -25,7 +25,7 @@ import static cn.mzh.demo.App.logger;
  */
 @Configuration
 public class MinaConfig {
-	//socket占用端口
+	// socket占用端口
 	@Value("${mina.port}")
 	private int port;
 
@@ -43,7 +43,7 @@ public class MinaConfig {
 	public InetSocketAddress inetSocketAddress() {
 		return new InetSocketAddress(port);
 	}
-	
+
 	@Bean
 	public IoAcceptor ioAcceptor() throws Exception {
 		IoAcceptor acceptor = new NioSocketAcceptor();
@@ -57,7 +57,7 @@ public class MinaConfig {
 		acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
 
 		acceptor.bind(inetSocketAddress());
-		logger.info("Socket服务器在端口：" + port+ "已经启动");
+		logger.info("Socket服务器在端口：" + port + "已经启动");
 		return acceptor;
 	}
 

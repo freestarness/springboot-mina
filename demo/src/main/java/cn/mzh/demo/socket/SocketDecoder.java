@@ -21,6 +21,7 @@ public class SocketDecoder extends CumulativeProtocolDecoder {
 		super();
 		this.charset = charset;
 	}
+
 	@Override
 	protected boolean doDecode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws Exception {
 
@@ -31,15 +32,15 @@ public class SocketDecoder extends CumulativeProtocolDecoder {
 			in.reset();
 			int size = Integer.valueOf(String.valueOf(charset.decode(ByteBuffer.wrap(sizeBytes))));
 			// 如果消息内容的长度不够则直接返回true
-			if (size  > in.remaining()) {// 如果消息内容不够，则重置，相当于不读取size
+			if (size > in.remaining()) {// 如果消息内容不够，则重置，相当于不读取size
 				in.reset();
 				return false;// 接收新数据，以拼凑成完整数据
 			} else {
 				byte[] data = new byte[in.remaining()];
-				in.get(data,0,size);
-				String str = new String(data,charset);
+				in.get(data, 0, size);
+				String str = new String(data, charset);
 				out.write(str);
-				//直接读取完毕不考虑粘包问题？
+				// 直接读取完毕不考虑粘包问题？
 				if (in.remaining() > 0) {
 					return true;
 				}

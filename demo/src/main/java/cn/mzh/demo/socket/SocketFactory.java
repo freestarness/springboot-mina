@@ -16,12 +16,12 @@ import org.apache.mina.filter.codec.textline.TextLineEncoder;
  *
  */
 public class SocketFactory implements ProtocolCodecFactory {
- // private finall TextLineDecoder decoder;
-	private final SocketDecoder decoder; 
-	private final TextLineEncoder encoder;
+	// private finall TextLineDecoder decoder;
+	private final SocketDecoder decoder;
+	private final SocketEncoder encoder;
 
 	public SocketFactory(Charset charset) {
-		encoder = new TextLineEncoder(charset, LineDelimiter.WINDOWS);
+		encoder = new SocketEncoder(charset);
 		decoder = new SocketDecoder(charset);
 	}
 
